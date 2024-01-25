@@ -7,6 +7,7 @@ Author: (Ryley Turner)
 
 import turtle
 import random
+import os
 
 # Constant that determines if the game is currently running
 game_running = True
@@ -284,7 +285,20 @@ def animate():
     else:
         canvas.clear()
         canvas.bgcolor("white")
-        canvas.title("GAME OVER")
+        
+        temp_file = open("HighScores.tmp", "w")
+
+        if os.path.exists("./HighScores.txt"):
+            my_file = open("HighScores.txt", "r")
+            for line in my_file:
+                temp_file.write(f"{line.strip()}\n")
+            my_file.close()
+            os.remove("./HighScores.txt")
+
+        temp_file.write(f"{str(snake_length)}")
+        temp_file.close()
+
+        os.rename("./HighScores.tmp", "./HighScores.txt")
 
 
 def get_food_location():
