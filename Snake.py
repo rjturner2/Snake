@@ -295,5 +295,23 @@ def get_snake_position():
     return snake
 
 
+def get_grid_density():
+    return GRID_DENSITY_WIDTH - 1, GRID_DENSITY_HEIGHT - 1
+
+
+def get_current_heading():
+    if HEADING[RIGHT]:
+        return "right"
+
+    if HEADING[DOWN]:
+        return "down"
+
+    if HEADING[LEFT]:
+        return "left"
+
+    if HEADING[UP]:
+        return "up"
+
+
 if __name__ == "__main__":
     main()
