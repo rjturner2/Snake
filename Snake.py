@@ -31,7 +31,6 @@ has_eaten = False
 
 # We need to setup where the food will be
 food_location = (random.randint(0, GRID_DENSITY_WIDTH), random.randint(0, GRID_DENSITY_HEIGHT))
-print(food_location)
 
 # Snake specific Boolean constants
 HEADING = [False for _ in range(4)]
@@ -41,7 +40,7 @@ LEFT = 2
 UP = 3
 HEADING[UP] = True
 
-sleep_time = int(round(1000 / FPS))
+sleep_time = 10000000
 canvas, draw = turtle.Screen(), turtle.Turtle()
 
 boundary_draw = turtle.Turtle()
@@ -49,7 +48,7 @@ boundary_draw = turtle.Turtle()
 
 def main():
     # We need to do some basic setup of our screen, including dimensions and turtle housekeeping items
-    setup()
+    setup(FPS)
 
     # We'll draw the bounding boxes if we have that debug option enabled
     if DRAW_BOXES:
@@ -161,7 +160,13 @@ def heading_right():
         HEADING[UP] = False
 
 
-def setup():
+def setup(user_defined_fps):
+    global FPS
+    global sleep_time
+
+    FPS = user_defined_fps
+    sleep_time = int(round(1000 / FPS))
+
     canvas.tracer(0)
     canvas.setup(RESOLUTION_X, RESOLUTION_Y)
     canvas.bgcolor("black")
@@ -179,6 +184,8 @@ def setup():
         boundary_draw.left(90)
         boundary_draw.forward(RESOLUTION_Y - MARGIN * 2)
         boundary_draw.left(90)
+
+    return canvas
 
 
 def setup_key_bindings():
@@ -278,6 +285,14 @@ def animate():
         canvas.clear()
         canvas.bgcolor("white")
         canvas.title("GAME OVER")
+
+
+def get_food_location():
+    return food_location
+
+
+def get_snake_position():
+    return snake
 
 
 if __name__ == "__main__":
