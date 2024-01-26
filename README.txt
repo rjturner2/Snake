@@ -23,4 +23,8 @@ Also, sorry Brandon. Since you're different and on a mac, this script will not r
 similar thing using UNIX, but that's a little outside of my paygrade since I don't have a machine I can run that
 on.
 
+One more note, if for some reason your terminal says HighScores.txt not found, let me know and I'll take a look at
+it. I know what's going on but I can't figure out a way to make sure it works on every machine flawlessly. I just 
+have to add another pseudonym for python to the PS1 script for your specific instance of python.
+
 If you have any other questions let me know!
