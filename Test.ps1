@@ -14,14 +14,22 @@ for (($i = 0); $i -lt $numberOfTests; $i++)
 }
 
 try {
-while (($processRunning -ne $null) -OR (%processRunning2 -ne $null)){
-        $processRunning = Get-Process -Name "python3.9" -ErrorAction silentlycontinue
+while (($processRunning -ne $null) -or ($processRunning2 -ne $null)) {
         $processRunning2 = Get-Process -Name "python" -ErrorAction silentlycontinue
+        $processRunning = Get-Process -Name "python3.9" -ErrorAction silentlycontinue
     }
 }
 
 catch {
-    Sleep 0.5
-    echo -n "Finished tests. The average was:"
-    python AverageScores.py
+    echo "Small Error"
 }
+
+finally {
+
+Sleep 0.5
+echo -n "Finished tests. The average was:"
+python AverageScores.py
+
+}
+
+
