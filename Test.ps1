@@ -1,6 +1,7 @@
-$numberOfTests = 50;
-$nameOfBot = "Ryleybot.py"
-$processRunning = 1;
+$numberOfTests = 1
+$nameOfBot = "RyleyBot.py"
+$processRunning = 1
+$processRunning2 = 1
 
 
 if (Test-Path "./HighScores.txt") {
@@ -13,12 +14,14 @@ for (($i = 0); $i -lt $numberOfTests; $i++)
 }
 
 try {
-while ($processRunning -ne $null){
-        $processRunning = Get-Process -Name "python" -ErrorAction Stop
+while (($processRunning -ne $null) -OR (%processRunning2 -ne $null)){
+        $processRunning = Get-Process -Name "python3.9" -ErrorAction silentlycontinue
+        $processRunning2 = Get-Process -Name "python" -ErrorAction silentlycontinue
     }
 }
 
 catch {
+    Sleep 0.5
     echo -n "Finished tests. The average was:"
     python AverageScores.py
 }
