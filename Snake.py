@@ -8,6 +8,7 @@ Author: (Ryley Turner)
 import turtle
 import random
 import os
+import sys
 
 # Constant that determines if the game is currently running
 game_running = True
@@ -17,9 +18,9 @@ DRAW_BOXES = False
 PRINT_INDEXES = False
 
 # Turtle constants
-RESOLUTION_X, RESOLUTION_Y = 1280, 720
-GRID_DENSITY_WIDTH = 60
-GRID_DENSITY_HEIGHT = 30
+RESOLUTION_X, RESOLUTION_Y = 1280, 1280
+GRID_DENSITY_WIDTH = 100
+GRID_DENSITY_HEIGHT = 100
 MARGIN = 20
 BOX_WIDTH = (RESOLUTION_X - MARGIN * 2) / GRID_DENSITY_WIDTH
 BOX_HEIGHT = (RESOLUTION_Y - MARGIN * 2) / GRID_DENSITY_HEIGHT
@@ -299,6 +300,8 @@ def animate():
         temp_file.close()
 
         os.rename("./HighScores.tmp", "./HighScores.txt")
+
+        sys.exit(0)
 
 
 def get_food_location():
