@@ -1,4 +1,4 @@
-$numberOfTests = 1
+$numberOfTests = 10
 $nameOfBot = "RyleyBot.py"
 $processRunning = 1
 $processRunning2 = 1
