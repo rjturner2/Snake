@@ -1,17 +1,24 @@
-rm "HighScores.txt"
+$numberOfTests = 50;
+$nameOfBot = "Ryleybot.py"
+$processRunning = 1;
 
-for (($i = 0); $i -lt 50; $i++)
-{
-    Start-Process python Ryleybot.py
+
+if (Test-Path "./HighScores.txt") {
+    rm "HighScores.txt"
 }
 
-$val = 1;
+for (($i = 0); $i -lt $numberOfTests; $i++)
+{
+    Start-Process python $nameOfBot
+}
+
 try {
-while ($val -ne $null){
-        $val = Get-Process -Name "python" -ErrorAction Stop
+while ($processRunning -ne $null){
+        $processRunning = Get-Process -Name "python" -ErrorAction Stop
     }
 }
+
 catch {
-    echo "Finished tests. The average was:"
+    echo -n "Finished tests. The average was:"
     python AverageScores.py
 }
