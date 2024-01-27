@@ -1,5 +1,5 @@
-$numberOfTests = 10
-$nameOfBot = "RyleyBot.py"
+$numberOfTests = $Args[1]
+$nameOfBot = $Args[0]
 $processRunning = 1
 $processRunning2 = 1
 
